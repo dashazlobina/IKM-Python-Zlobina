@@ -1,11 +1,9 @@
 class Node:
     """Узел односвязного списка."""
-    
     def __init__(self, coef=0, deg=0):
         self.coef = coef
         self.deg = deg
         self.next = None
-
 
 class Polynomial:
     """Односвязный список для многочлена."""
@@ -14,7 +12,7 @@ class Polynomial:
         self.head = None
 
     def add_term(self, coef, deg):
-        """Добавляет член с объединением подобных (для упрощения)."""
+        """Добавляет член с объединением подобных"""
         if coef == 0:
             return
             
@@ -43,7 +41,6 @@ class Polynomial:
             current.next = new_node
 
     def add_term_raw(self, coef, deg):
-        """Добавляет член БЕЗ объединения подобных (для чтения исходного)."""
         new_node = Node(coef, deg)
         if self.head is None:
             self.head = new_node
@@ -52,7 +49,6 @@ class Polynomial:
             while current.next is not None:
                 current = current.next
             current.next = new_node
-
 
 def input_polynomial(expr):
     """Ввод: из строки в список."""
@@ -78,7 +74,6 @@ def input_polynomial(expr):
         else:
             sign = 1
         
-        # ПРОВЕРКА: после знака что-то есть
         if i >= n:
             raise ValueError("После знака '" + ('+' if sign == 1 else '-') + "' ничего нет")
         
@@ -115,7 +110,6 @@ def input_polynomial(expr):
 
 
 def output_polynomial(poly):
-    """ПРОЦЕДУРА ВЫВОДА: из списка в строку."""
     if poly is None or poly.head is None:
         return "0"
     
@@ -159,7 +153,6 @@ def output_polynomial(poly):
 
 
 def simplify_polynomial(poly):
-    """ПРОЦЕДУРА ПРИВЕДЕНИЯ ПОДОБНЫХ."""
     if poly is None or poly.head is None:
         return poly
     
